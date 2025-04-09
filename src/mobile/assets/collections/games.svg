@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-    <rect width="300" height="300" fill="#16A085"/>
-    <text x="150" y="150" font-family="Arial" font-size="32" fill="white" text-anchor="middle">Game Music</text>
-    <polygon points="150,80 130,120 170,120" fill="white" opacity="0.3"/>
-</svg> 

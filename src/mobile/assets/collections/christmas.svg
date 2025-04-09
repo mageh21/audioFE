@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-    <rect width="300" height="300" fill="#C0392B"/>
-    <text x="150" y="150" font-family="Arial" font-size="32" fill="white" text-anchor="middle">Christmas</text>
-    <path d="M150,80 L130,120 L170,120 Z" fill="white" opacity="0.5"/>
-</svg> 

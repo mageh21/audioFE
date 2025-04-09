@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-    <rect width="300" height="300" fill="#4D79FF"/>
-    <text x="150" y="150" font-family="Arial" font-size="24" fill="white" text-anchor="middle">Amazing Grace</text>
-    <path d="M100,100 Q150,50 200,100" stroke="white" fill="none" stroke-width="3"/>
-</svg> 
