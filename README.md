@@ -1,39 +1,128 @@
-# Project Workspace
+# MusicXML and MIDI Player Application
 
-This repository is set up to help you track and restore changes to your project.
+A comprehensive web-based application for playing and visualizing musical scores in both MusicXML and MIDI formats.
 
-## Git Commands for Restoring Changes
+## Overview
 
-### Basic Commands
+This application provides two integrated players:
+1. **MusicXML Player** - For playing and visualizing MusicXML sheet music with soundfont support
+2. **MIDIano MIDI Player** - For MIDI file playback with piano roll visualization
 
-- **Check status**: `git status` - Shows the current state of your working directory
-- **View commit history**: `git log` - Lists all your commits
+## Features
 
-### Creating Restore Points
+### MusicXML Player
+- Upload and play MusicXML files (.musicxml, .mxl, .xml)
+- Sample scores included
+- Instrument selection from 128 General MIDI instruments
+- Tempo, pitch, and tuning controls
+- Beautiful sheet music rendering
+- PDF score conversion capabilities
 
-1. **Stage changes**: `git add <file>` or `git add .` (for all files)
-2. **Create a restore point**: `git commit -m "Descriptive message"`
+### MIDIano MIDI Player
+- Upload and play MIDI files with piano roll visualization
+- Falling notes display with accurate timing
+- Playback controls with speed adjustment
+- Customizable appearance settings
+- Keyboard visualization
 
-### Restoring Changes
+## Installation
 
-1. **Discard changes to a specific file**: `git checkout -- <file>`
-2. **Discard all uncommitted changes**: `git restore .`
-3. **Restore to a specific commit**:
-   - Find the commit ID using `git log`
-   - Restore with `git checkout <commit-id>`
-   - Return to latest version with `git checkout main`
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-### Working with Branches
+### Setup
 
-1. **Create a new branch**: `git checkout -b <branch-name>`
-2. **Switch between branches**: `git checkout <branch-name>`
-3. **List all branches**: `git branch`
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/musicxml-midi-player.git
+cd musicxml-midi-player
+```
 
-## Project Structure
+2. Install dependencies:
+```
+cd audioFE
+npm install
+```
 
-- **audioFE/**: Audio frontend project (managed by its own git repository)
+## Running the Application
 
-## Notes
+Start the application with:
 
-- The audioFE directory is excluded from this git repository as it has its own version control
-- Remember to commit your changes frequently to create restore points 
+```
+cd audioFE
+npm run start
+```
+
+This will start the web server on port 8080. The application will be accessible at:
+- Main application: http://localhost:8080/
+- MIDIano player: http://localhost:8080/midiano/index.html
+
+## Usage
+
+### MusicXML Player (Home)
+1. Open http://localhost:8080/ in your web browser
+2. Upload a MusicXML file using the "Upload MusicXML File" button or select one of the sample scores
+3. Use the playback controls at the bottom to play, pause, and rewind
+4. Adjust tempo, pitch, and tuning as needed
+5. Select different instruments from the dropdown menu
+
+### MIDIano Player
+1. Click on "MIDI Player" in the navigation menu
+2. Upload a MIDI file using the "Upload MIDI" button
+3. Use the playback controls to control playback
+4. Adjust settings using the settings panel
+5. Return to the main application using the "Back to Home" button
+
+## Converting PDF Scores
+1. In the main application, use the "Convert Score to MusicXML" section
+2. Upload a PDF or image of sheet music
+3. Click "Convert Score"
+4. Wait for the conversion to complete
+5. The converted score will automatically load into the player
+
+## Technical Details
+
+The application consists of two main components:
+1. **MusicXML Player**: Built with custom JavaScript renderer and SoundFont support
+2. **MIDIano Player**: Integrated from [MIDIano GitHub repository](https://github.com/mageh21/midi_plyaer)
+
+The application uses a simple web server (ws) to serve both components from the same port.
+
+## Server Configuration
+
+The application runs two server instances:
+- Demo server on port 8080: `ws -d demo --rewrite /mma/(.*) -> http://localhost:3000/$1 -p 8080`
+- Mobile server on port 8081: `ws -d src/mobile -p 8081`
+
+## Troubleshooting
+
+### Port already in use
+If you see "EADDRINUSE" errors when starting the application, it means the ports are already in use. You can:
+1. Kill existing processes:
+```
+lsof -i :8080 -i :8081 | grep LISTEN
+kill -9 [PID]  # Replace [PID] with the process IDs from the output above
+```
+2. Or change the port in the start script
+
+### Audio not playing
+1. Make sure your browser is not muted
+2. Try clicking on the page first (some browsers require user interaction before playing audio)
+3. Check browser console for errors
+
+### MIDI Player not loading
+1. Ensure you have correctly set up the MIDIano player files
+2. Check the browser console for any JavaScript errors
+3. Try refreshing the page
+
+## License
+
+This project incorporates:
+- The MIDIano player (https://github.com/mageh21/midi_plyaer)
+- Custom MusicXML player
+
+## Credits
+
+- MIDIano MIDI Player: Created by [mageh21](https://github.com/mageh21/midi_plyaer)
+- MusicXML Player: Custom implementation for audio playback of MusicXML files 
